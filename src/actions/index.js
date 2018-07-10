@@ -1,57 +1,57 @@
-import request from '../helpers/request'
+import { request } from '../helpers'
 
-export const ADD_POST = "ADD_POST"
-export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS"
-export const FETCH_POSTS_FAILED = "FETCH_POSTS_FAILED"
-export const DELETE_POST = "DELETE_POST"
-export const EDIT_POST = "EDIT_POST"
+export const ADD_TRANSACTION = "ADD_TRANSACTION"
+export const FETCH_TRANSACTIONS_SUCCESS = "FETCH_TRANSACTIONS_SUCCESS"
+export const FETCH_TRANSACTIONS_FAILED = "FETCH_TRANSACTIONS_FAILED"
+export const DELETE_TRANSACTION = "DELETE_TRANSACTION"
+export const EDIT_TRANSACTION = "EDIT_TRANSACTION"
 
-export const addPost = (title, body ) => {
-  let newPost = {
-    title: title,
-    body: body
+export const addTransaction = (title, body ) => {
+  let newTransaction = {
+    // title: title,
+    // body: body
   }
   return dispatch => {
-    request(`/blog_posts`, `post`, newPost)
-    .then(post => dispatch({
-      type: ADD_POST,
-      payload: post
+    request(`/transactions`, `post`, newTransaction)
+    .then(transaction => dispatch({
+      type: ADD_TRANSACTION,
+      payload: transaction
     }))
   }
 }
 
-export const fetchPosts = () => {
+export const fetchTransactions = () => {
   return dispatch => {
-    request('/blog_posts?limit=10&orderByColumn=id&orderDirection=desc')
-      .then(posts => dispatch({
-        type: FETCH_POSTS_SUCCESS,
-        payload: posts.data.blog_posts
+    request('/transactions?limit=10&orderByColumn=id&orderDirection=desc')
+      .then(transaction => dispatch({
+        type: FETCH_TRANSACTIONS_SUCCESS,
+        payload: transaction.data.transactions
       }))
   }
 }
 
-export const deletePost = (id) => {
+export const deleteTransaction = (id) => {
   return dispatch => {
-    request(`/blog_posts/${id}`, 'delete')
-    .then(posts => dispatch({
-      type: DELETE_POST,
-      payload: posts
+    request(`/transactions/${id}`, 'delete')
+    .then(transactions => dispatch({
+      type: DELETE_TRANSACTION,
+      payload: transactions
     }))
     .then(response => {
-      dispatch(fetchPosts())
+      dispatch(fetchTransactions())
     })
   }
 }
 
-export const editPost = (id =>{
+export const editTransaction = (id) =>{
   return dispatch => {
-    request(`/blog_posts/${id}`, 'patch')
-    .then(post=> dispatch({
-      type: EDIT_POST,
-      payload: post
+    request(`/transactions/${id}`, 'put')
+    .then(transaction=> dispatch({
+      type: EDIT_TRANSACTION,
+      payload: transaction
     }))
     .then(response=>{
-      dispatch(fetchPosts())
+      dispatch(fetchTransactions())
     })
   }
-})
+}

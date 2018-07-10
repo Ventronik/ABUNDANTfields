@@ -1,10 +1,10 @@
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import postsReducer from './reducers/postsReducer'
+import transactionsReducer from './reducers/transactionsReducer'
 import logger from 'redux-logger'
 
 const rootReducer = combineReducers({
-  posts: postsReducer
+  transactions: transactionsReducer
 })
 
 export default () => createStore(rootReducer, applyMiddleware(logger, thunkMiddleware))

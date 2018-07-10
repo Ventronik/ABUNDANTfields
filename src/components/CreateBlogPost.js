@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { request } from '../helpers'
 import { withRouter } from 'react-router-dom'
-import { addPost } from '../actions'
+import { addTransaction } from '../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -16,7 +16,7 @@ class CreateBlogPost extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.addPost(event.target.title.value, event.target.body.value)
+    this.props.addTransaction(event.target.title.value, event.target.body.value)
     // request('/blog_posts','post', {
     //   title: event.target.title.value,
     //   body: event.target.body.value,
@@ -56,7 +56,7 @@ class CreateBlogPost extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  addPost
+  addTransaction
 }, dispatch)
 
 export default connect(null, mapDispatchToProps)(withRouter(CreateBlogPost))

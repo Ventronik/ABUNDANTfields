@@ -41,7 +41,6 @@ class AuthenticationWrapper extends Component{
       />
     )
   }
-
 }
 
 export const withAuthentication = (Component) =>
@@ -88,6 +87,7 @@ const AuthRoute = (props) => {
     return props.loading || <div>Loading...</div>
   }
   else {
+    console.log('HERE: ', props)
     return props.authState ? <Route {...props} /> : <Redirect to='/' />
   }
 }

@@ -4,28 +4,26 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AuthenticatedRoute } from '../helpers';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions'
-import Login from './Login';
+import { fetchTransactions } from '../actions'
+
 import Home from './Home';
-import Header from './Header';
-import CreateBlogPost from './CreateBlogPost';
+// import CreateBlogPost from './CreateBlogPost';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchPosts()
+    this.props.fetchTransactions()
   }
   render() {
     return (
       <BrowserRouter>
         <div>
           <div className="container">
-            <Header />
+            <div className="row">
+              <Switch>
+                <Route path='/' component={Home} />
+              </Switch>
+            </div>
           </div>
-          <Switch>
-            <Route path='/login' component={Login} />
-            <AuthenticatedRoute exact path='/create' component={CreateBlogPost} />
-            <Route path='/' component={Home} />
-          </Switch>
         </div>
       </BrowserRouter>
     );
@@ -33,7 +31,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts
+  fetchTransactions
 }, dispatch)
 
 export default connect(null,mapDispatchToProps)(App);

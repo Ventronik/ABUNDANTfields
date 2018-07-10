@@ -26,7 +26,7 @@ class Login extends Component {
     })
     .then(response => {
       AuthenticationService.setAuthState(response.data)
-      this.props.history.push('/')
+      this.props.history.push('/home')
     })
     .catch(error => {
       this.setState({showErrorMessage: true})
@@ -35,7 +35,7 @@ class Login extends Component {
 
   render(){
     return (
-      <div className="login">
+      <div className="login col-md-9 blog-main">
         <form onSubmit={this.handleSignIn} className="login-form">
           <div className="text-center mb-4">
             <h1 className="h3 mb-3 font-weight-normal">Log in</h1>

@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
 import { Provider } from 'react-redux';
-import store from './store';
 import registerServiceWorker from './registerServiceWorker';
+
+import store from './store';
+import App from './components/App';
+import { request, AuthenticationService } from './helpers/index'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
-import { request, AuthenticationService } from './helpers/index'
+import './index.css';
 
 let newStore = store()
 
@@ -18,9 +19,6 @@ request('/auth/token')
 })
 
 window.AuthenticationService = AuthenticationService
-
-
-
 
 ReactDOM.render(
   <Provider store={newStore}>

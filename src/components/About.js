@@ -4,11 +4,12 @@ import { withAuthentication, AuthenticationService } from '../helpers'
 
 import '../styles/header.css'
 
-const About = (props) => {
+const About = (props ) => {
   const SignInSignOutButton =() => {
     if(props.authState){
       localStorage.removeItem('token')
       AuthenticationService.setAuthState(null)
+      props.history.push('/')
     }
     else {
       props.history.push('/login')
@@ -27,14 +28,27 @@ const About = (props) => {
         </span> : <Link className="btn btn-sm btn-outline-secondary" to="/">Sign up</Link>
       }
 
-      <span className="btn btn-sm btn-outline-secondary" onClick={()=>this.SignInSignOutButton()}>
+
+      {
+        AuthenticationService.getAuthState() ?
+        <Link
+          className="btn btn-sm btn-outline-secondary"
+          style={{marginRight: '5px'}}
+          to="/create">
+          Create Blog Post
+        </Link> : null
+      }
+
+      <span className="btn btn-sm btn-outline-secondary" onClick={()=>SignInSignOutButton()}>
         {props.authState ? 'Sign Out' : 'Sign In'}
       </span>
 
       <h4 className="font-italic">About</h4>
-      <p className="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      <p className="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod.
+      Cras mattis consectetur purus sit amet fermentum.
+      Aenean lacinia bibendum nulla sed consectetur.</p>
     </div>
   )
 }
 
-export default About
+export default withAuthentication(About);

@@ -1,4 +1,4 @@
-import request from '../helpers/request';
+import { request } from '../helpers';
 import AuthenticationService from "../helpers/AuthenticationService";
 
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING';
