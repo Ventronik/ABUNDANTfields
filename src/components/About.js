@@ -27,7 +27,7 @@ const About = (props ) => {
         props.authState ?
         <h5 style={{marginLeft: '5px'}}>
           Welcome, {props.authState.username}
-        </h5> : <Link className="btn btn-sm btn-outline-secondary" to="/">Sign up</Link>
+        </h5> : <Link className="btn btn-sm btn-outline-secondary" to="/signup">Sign up</Link>
       }
 
 

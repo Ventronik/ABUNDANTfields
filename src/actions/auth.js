@@ -47,10 +47,10 @@ export const userSignup = (newUser, history) => (
     dispatch({type: USER_SIGNUP_PENDING});
     request('/users', 'post', newUser)
     .then(response => {
-      dispatch({
-        type: USER_SIGNUP_SUCCESS,
-        payload: response.data
-      });
+      // dispatch({
+      //   type: USER_SIGNUP_SUCCESS,
+      //   payload: response.data
+      // });
       history.push('/login');
     })
     .catch(error => {

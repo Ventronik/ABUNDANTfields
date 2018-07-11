@@ -15,9 +15,9 @@ class Login extends Component {
 
   handleSignIn = event => {
     event.preventDefault()
-    const { inputEmail, inputPassword } = event.target
+    const { inputUsername, inputPassword } = event.target
     request('/auth/token','post', {
-      username: inputEmail.value,
+      username: inputUsername.value,
       password: inputPassword.value })
     .then(response => {
       this.setState({ showErrorMessage: false })
@@ -42,7 +42,13 @@ class Login extends Component {
           </div>
 
           <div className="form-label-group">
-            <input type="text" name="inputEmail" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
+            <input
+              type="text"
+              name="inputUsername"
+              id="inputUsername"
+              className="form-control"
+              placeholder="Username"
+              required autoFocus />
           </div>
 
           <div className="form-label-group">

@@ -4,8 +4,14 @@ import {
   ADD_TRANSACTION,
   DELETE_TRANSACTION
 } from '../actions'
+import {
+  USER_SIGNUP_FAILED
+} from '../actions/auth'
 
-const initialState = []
+
+const initialState = {
+  showSignupError: false,
+};
 
 export default (state = initialState, action) => {
   console.log(action)
@@ -18,6 +24,8 @@ export default (state = initialState, action) => {
       return [...state, action.payload]
     case DELETE_TRANSACTION:
       return [...state, action.payload]
+    case USER_SIGNUP_FAILED:
+      return {...state, isLoading: false, showSignupError: true};
     default:
       return state
   }

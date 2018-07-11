@@ -15,7 +15,7 @@ class Login extends Component {
       showErrorMessage: false,
       first_name: '',
       last_name: '',
-      email: '',
+      username: '',
       password: '',
     }
   }
@@ -28,7 +28,7 @@ class Login extends Component {
   render(){
     return (
       <div className="login col-md-9 blog-main">
-        <Form onSubmit={this.handleSignUp} className="signup-form">
+        <Form onSubmit={this.handleSignUp} className="login-form">
           <FormGroup>
             <div className="text-center mb-4">
               <h1 className="h3 mb-3 font-weight-normal">Sign Up</h1>
@@ -52,12 +52,12 @@ class Login extends Component {
                   onChange={event => this.setState({last_name: event.target.value})}
                 />
                 <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={event => this.setState({email: event.target.value})}
+                  type="username"
+                  name="username"
+                  id="username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={event => this.setState({username: event.target.value})}
                 />
                 <Input
                   type="password"
@@ -67,19 +67,11 @@ class Login extends Component {
                   value={this.state.password}
                   onChange={event => this.setState({password: event.target.value})}
                 />
-                {this.props.showSignupError ? (
+                {/* {this.props.showSignupError ? (
                   <Alert color="danger">
                     Please complete all fields.
                   </Alert>
-                ) : null}
-
-            <div className="form-label-group">
-              <input type="text" name="inputEmail" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
-            </div>
-
-            <div className="form-label-group">
-              <input type="password" name="inputPassword" id="inputPassword" className="form-control" placeholder="Password" required />
-            </div>
+                ) : null} */}
             <div className={ !this.state.showErrorMessage ? 'signup-auth-error signup-hide-auth-error' : 'signup-auth-error' }>
               Invalid Username or Password
             </div>
@@ -91,10 +83,10 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({showSignupError: state.auth.showSignupError});
+// const mapStateToProps = state => ({showSignupError: state.auth.showSignupError});
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({userSignup}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

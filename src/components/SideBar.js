@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Link } from "react-router-dom"
 
 import abundantfields from '../assets/abundantfields.png';
 import About from './About';
@@ -14,7 +14,7 @@ const SideBar = (props) => {
   return (
     <aside className="col-md-3 blog-sidebar">
       <div className="sidenav">
-        <img src={abundantfields} alt="..." className="img-thumbnail"></img>
+        <Link to='/'><img src={abundantfields} alt="..." className="img-thumbnail"></img></Link>
         <About {...props}/>
         <Archives />
         <Authors />
