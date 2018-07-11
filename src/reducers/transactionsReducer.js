@@ -9,9 +9,9 @@ import {
 } from '../actions/auth'
 
 
-const initialState = {
-  showSignupError: false,
-};
+const initialState = [
+  {showSignupError: false},
+];
 
 export default (state = initialState, action) => {
   console.log(action)

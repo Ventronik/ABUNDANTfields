@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Transaction from './Transaction'
 
 const Transactions = ({transactions}) => {
-
+  console.log(transactions)
   return (
     <div>
       {transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)}

@@ -83,10 +83,10 @@ class Login extends Component {
   }
 }
 
-// const mapStateToProps = state => ({showSignupError: state.auth.showSignupError});
+const mapStateToProps = state => ({showSignupError: state.showSignupError});
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({userSignup}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
