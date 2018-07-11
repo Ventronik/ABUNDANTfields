@@ -18,18 +18,13 @@ const About = (props ) => {
   }
   return (
     <div className="p-3 mb-3 bg-light rounded">
-      <div>
-        {/* <img src={abundantfields} alt="..." className="img-thumbnail"></img> */}
-        {/* <Link to="/" className="blog-header-logo text-dark">ABUNDANTfields</Link> */}
-      </div>
 
       {
         props.authState ?
         <h5 style={{marginLeft: '5px'}}>
           Welcome, {props.authState.username}
-        </h5> : <Link className="btn btn-sm btn-outline-secondary" to="/signup">Sign up</Link>
+        </h5> : <Link className="btn btn-sm btn-outline-secondary" to="/signup">Sign-up</Link>
       }
-
 
       {
         AuthenticationService.getAuthState() ?
@@ -42,7 +37,7 @@ const About = (props ) => {
       }
 
       <span className="btn btn-sm btn-outline-secondary" onClick={()=>SignInSignOutButton()}>
-        {props.authState ? 'Sign Out' : 'Sign In'}
+        {props.authState ? 'Sign Out' : 'Sign-in'}
       </span>
 
       <h4 className="font-italic">About</h4>
