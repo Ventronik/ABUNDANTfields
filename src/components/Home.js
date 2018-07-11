@@ -1,17 +1,18 @@
-import React, {Component} from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React, {Component} from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 // import Labels from './Labels'
 import { AuthenticatedRoute } from '../helpers';
 
 import Login from './Login';
-import TransactionsFrontPage from './TransactionsFrontPage'
-import SideBar from './SideBar'
-import MapContainer from './MapContainer'
+import SignUp from './SignUp';
+import TransactionsFrontPage from './TransactionsFrontPage';
+import SideBar from './SideBar';
+import MapContainer from './MapContainer';
 import CreateBlogPost from './CreateBlogPost';
-import Footer from './Footer'
+import Footer from './Footer';
 
-import '../styles/home.css'
+import '../styles/home.css';
 
 class Home extends Component {
   render() {
@@ -30,6 +31,7 @@ class Home extends Component {
               <Route path='/home' component={TransactionsFrontPage} />
               <AuthenticatedRoute exact path='/create' component={CreateBlogPost} />
               <Route path='/login' component={Login} />
+              <Route path='/signup' component={SignUp} />
             </Switch>
 
           </div>

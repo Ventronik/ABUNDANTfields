@@ -1,5 +1,5 @@
 import { request } from '../helpers';
-import AuthenticationService from "../helpers/AuthenticationService";
+import { AuthenticationService } from "../helpers/index";
 
 export const USER_LOGIN_PENDING = 'USER_LOGIN_PENDING';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';

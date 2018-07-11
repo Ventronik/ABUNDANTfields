@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { withAuthentication, AuthenticationService } from '../helpers'
+import { withAuthentication, AuthenticationService } from '../helpers/index'
+import abundantfields from '../assets/abundantfields.png'
 
 import '../styles/header.css'
 
@@ -18,14 +19,15 @@ const About = (props ) => {
   return (
     <div className="p-3 mb-3 bg-light rounded">
       <div>
-        <Link to="/" className="blog-header-logo text-dark">ABUNDANTfields</Link>
+        {/* <img src={abundantfields} alt="..." className="img-thumbnail"></img> */}
+        {/* <Link to="/" className="blog-header-logo text-dark">ABUNDANTfields</Link> */}
       </div>
 
       {
         props.authState ?
-        <span style={{marginLeft: '5px'}}>
+        <h5 style={{marginLeft: '5px'}}>
           Welcome, {props.authState.username}
-        </span> : <Link className="btn btn-sm btn-outline-secondary" to="/">Sign up</Link>
+        </h5> : <Link className="btn btn-sm btn-outline-secondary" to="/">Sign up</Link>
       }
 
 

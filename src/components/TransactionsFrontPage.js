@@ -40,9 +40,9 @@ class TransactionsFrontPage extends Component {
   render(){
     return (
       <div className="col-md-9 blog-main">
-        <h3 className="font-italic border-bottom">
-          Latest Post
-        </h3>
+        <h1 className="font-italic border-bottom">
+          Current Transactions
+        </h1>
 
         {
           this.state.loading ? <MoonLoader /> : <Transactions transactions={this.state.transactions} refreshData={this.getData}/>
@@ -54,14 +54,6 @@ class TransactionsFrontPage extends Component {
 
         <nav className="blog-pagination">
           <a className="btn btn-outline-primary">Older</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-primary">Older</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
           <a className="btn btn-outline-secondary disabled">Newer</a>
         </nav>
 
