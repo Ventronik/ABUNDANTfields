@@ -31,7 +31,7 @@ const Transaction = ({ transaction, authState, refreshData, deleteTransaction })
        </p>
        <hr />
       {/* <ReactMarkdown source={body} /> */}
-      <p>{id}, {location}, {users_id}, {created_at}, {username}, {parcel_id}, {parcel_name}</p>
+      <p>{id}, {users_id}, {created_at}, {username}, {parcel_id}, {parcel_name}</p>
     </div>
   )
 }

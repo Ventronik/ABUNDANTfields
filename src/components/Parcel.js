@@ -10,13 +10,17 @@ import moment from 'moment'
 
 const Parcel = ({ parcel, authState, refreshData, deleteParcel }) => {
   const { id, users_id, location, created_at, username, parcel_id, parcel_name } = parcel;
-
+  // console.log('HELLO: ', JSON.parse(location))
   const remove = (id) => {
     // request(`/blog_posts/${id}`, 'delete')
     // .then(response => {
       // refreshData()
     // })
   }
+
+  let urlCoordinates = location.reduce((acc,arr)=>`${acc}|${arr.lat},${arr.lng}`,'')
+  urlCoordinates = urlCoordinates +`|${location[0].lat},${location[0].lng}`
+  console.log('HAMBRUGARZ: ', location[0].lat, urlCoordinates)
 
   return (
     <div className="blog-post">
@@ -38,7 +42,10 @@ const Parcel = ({ parcel, authState, refreshData, deleteParcel }) => {
        </p>
        <hr />
       {/* <ReactMarkdown source={body} /> */}
-      <p>{id}, {location}, {users_id}, {created_at}, {username}, {parcel_id}, {parcel_name}</p>
+      <p>{id}, {users_id}, {created_at}, {username}, {parcel_id}, {parcel_name}</p>
+    <img
+      src={`http://maps.googleapis.com/maps/api/staticmap?size=180x180&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
+      height="180" width="180"></img>
     </div>
   )
 }
