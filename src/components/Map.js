@@ -17,32 +17,7 @@ const Map = compose (
       defaultZoom={8}
       defaultCenter={new window.google.maps.LatLng(-34.397, 150.644)}
     >
-    <DrawingManager
-      defaultDrawingMode={window.google.maps.drawing.OverlayType.POLYGON}
-      defaultOptions={{
-        drawingControl: true,
-        drawingControlOptions: {
-          position: window.google.maps.ControlPosition.TOP_CENTER,
-          drawingModes: [
-            window.google.maps.drawing.OverlayType.POLYGON,
-            window.google.maps.drawing.OverlayType.RECTANGLE,
-          ]
-        }
-      }}
-      onPolygonComplete={
-        function (polygon) {
-          var coordinates = (polygon.getPath().getArray().map(ele => ({lat: ele.lat(), lng: ele.lng()})));
-          console.log(coordinates);
-        }
-      }
-      onRectangleComplete={
-        function (rectangle) {
-          var coordinates = (rectangle.getBounds().toJSON());
-          console.log(coordinates);
-        }
-      }
-    />
-  </GoogleMap>
+    </GoogleMap>
 );
 
 export default Map;

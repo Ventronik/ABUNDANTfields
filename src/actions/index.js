@@ -5,6 +5,7 @@ export const FETCH_TRANSACTIONS_SUCCESS = "FETCH_TRANSACTIONS_SUCCESS"
 export const FETCH_TRANSACTIONS_FAILED = "FETCH_TRANSACTIONS_FAILED"
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION"
 export const EDIT_TRANSACTION = "EDIT_TRANSACTION"
+export const ADD_FIELD = "ADD_FIELD"
 
 export const addTransaction = (title, body ) => {
   let newTransaction = {
@@ -53,5 +54,19 @@ export const editTransaction = (id) =>{
     .then(response=>{
       dispatch(fetchTransactions())
     })
+  }
+}
+
+export const addField = (location, name ) => {
+  let newParcel = {
+    location,
+    name
+  }
+  return dispatch => {
+    request(`/parcels`, `post`, newParcel)
+    .then(field => dispatch({
+      type: ADD_FIELD,
+      payload: field
+    }))
   }
 }

@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <Switch>
                 <Route path='/' component={Home} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Map from './Map'
-
+import Map from './Map';
+import NewFieldMap from './NewFieldMap';
+import { withRouter } from 'react-router-dom'
 
 class MapContainer extends Component {
   state = {
@@ -24,20 +25,27 @@ class MapContainer extends Component {
   }
 
   render() {
+    const currentUrlPath =  this.props.history.location.pathname
     return (
-      <div className="col-md-8 blog-main" >
-        {/* <div className=""> */}
-          <div id='map-container'>
+      <div>
+        <div id='map-container'>
+          { currentUrlPath === "/" ?
             <Map
               isMarkerShown={this.state.isMarkerShown}
               onMarkerClick={this.handleMarkerClick}
             />
-          </div>
-        {/* </div> */}
-        
+          :
+            <NewFieldMap
+              isMarkerShown={this.state.isMarkerShown}
+              onMarkerClick={this.handleMarkerClick}
+              onPolygonComplete={this.props.onPolygonComplete}
+              paths={this.props.paths}
+            />
+        }
+        </div>
       </div>
     )
   }
 }
 
-export default MapContainer
+export default withRouter(MapContainer);
