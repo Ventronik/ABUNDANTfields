@@ -44,7 +44,7 @@ const Parcel = ({ parcel, authState, refreshData, deleteParcel }) => {
       {/* <ReactMarkdown source={body} /> */}
       <p>{id}, {users_id}, {created_at}, {username}, {parcel_id}, {parcel_name}</p>
     <img
-      src={`http://maps.googleapis.com/maps/api/staticmap?size=180x180&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
+      src={`https://maps.googleapis.com/maps/api/staticmap?size=180x180&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
       height="180" width="180"></img>
     </div>
   )

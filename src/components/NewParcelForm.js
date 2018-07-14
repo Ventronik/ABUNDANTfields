@@ -16,19 +16,21 @@ class NewParcelForm extends Component {
   componentDidMount() {
 
   }
+
   onPolygonComplete = (paths) => {
     this.setState({ paths })
-    console.log(this.state.paths)
+    // console.log(this.state.paths)
   }
   onNewParcelForm = (parcel_name, acres, parcel_type) => {
     const userId = this.props.authState.id
     const location = this.state.paths
     request(`/users/${userId}/parcel`, 'post', {parcel_name, location, parcel_type, acres})
-    .then(() => this.props.history.push('/myFields')) 
+    .then(() => this.props.history.push('/myFields'))
     // axios/request
   }
   render() {
-    console.log('this.props: ', this.props, 'this.state: ', this.state, 'props: ')
+    // console.log('this.props: ', this.props, 'this.state: ', this.state, 'props: ')
+    const { paths, onChangeStart, onChangeEnd } = this;
     const currentUrlPath =  this.props.history.location.pathname
     return (
       <div>
@@ -40,7 +42,7 @@ class NewParcelForm extends Component {
         </div>
         <div className='row'>
           <div className='col'>
-            <MapContainer onPolygonComplete={this.onPolygonComplete} paths={this.state.paths}/>
+            <MapContainer onPolygonComplete={this.onPolygonComplete} paths={this.state.paths} onMouseUp={this.onMouseUp}/>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from './Map';
 import NewFieldMap from './NewFieldMap';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class MapContainer extends Component {
   state = {
@@ -9,15 +9,15 @@ class MapContainer extends Component {
   }
 
   componentDidMount() {
-    this.delayedShowMarker()
+    // this.delayedShowMarker()
   }
 
   // Delay on the Markers
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true })
-    }, 2000)
-  }
+  // delayedShowMarker = () => {
+  //   setTimeout(() => {
+  //     this.setState({ isMarkerShown: true })
+  //   }, 2000)
+  // }
 
   handleMarkerClick = () => {
     this.setState({ isMarkerShown: false })

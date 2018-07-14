@@ -15,51 +15,124 @@ const NewFieldMap = compose (
   }),
   withScriptjs,
   withGoogleMap
-  )(props =>
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={new window.google.maps.LatLng(47.607, -122.15)}
-      mapTypeId={'satellite'}
+  )(props => {
+    return (
+      <GoogleMap
+        defaultZoom={10}
+        defaultCenter={new window.google.maps.LatLng(47.607, -122.15)}
+        mapTypeId={'satellite'}
+      >
+      <DrawingManager
+        defaultDrawingMode={window.google.maps.drawing.OverlayType.POLYGON}
+        defaultOptions={{
+          drawingControl: true,
+          drawingControlOptions: {
+            position: window.google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: [
+              window.google.maps.drawing.OverlayType.POLYGON,
+              window.google.maps.drawing.OverlayType.RECTANGLE,
+            ]
+          }
+        }}
 
-    >
-    <DrawingManager
-      defaultDrawingMode={window.google.maps.drawing.OverlayType.POLYGON}
-      defaultOptions={{
-        drawingControl: true,
-        drawingControlOptions: {
-          position: window.google.maps.ControlPosition.TOP_CENTER,
-          drawingModes: [
-            window.google.maps.drawing.OverlayType.POLYGON,
-            window.google.maps.drawing.OverlayType.RECTANGLE,
-          ]
+        onPolygonComplete={
+          function (polygon) {
+            var coordinates = (polygon.getPath().getArray().map(ele => ({lat: ele.lat(), lng: ele.lng()})));
+            polygon.setPath([])
+            props.onPolygonComplete(coordinates)
+          }
         }
-      }}
 
-      onPolygonComplete={
-        function (polygon) {
-          var coordinates = (polygon.getPath().getArray().map(ele => ({lat: ele.lat(), lng: ele.lng()})));
-          polygon.setPath([])
-          props.onPolygonComplete(coordinates)
-        }
-      }
+        onRectangleComplete={
+          function (rectangle) {
+            var coordinates = (rectangle.getBounds().toJSON());
+            console.log(coordinates);
+          }}
+        />
+      <MyPolygon paths={props.paths} onPolygonComplete={props.onPolygonComplete}/>
+      </GoogleMap>
+    )
+  }
 
-      onRectangleComplete={
-        function (rectangle) {
-          var coordinates = (rectangle.getBounds().toJSON());
-          console.log(coordinates);
-        }
-      }
-    />
-    <Polygon
-      paths={props.paths}
-      onClick={(event)=> {
-        console.log(event)
-      }}
-      editable={true}
-      draggable = {true}
-    />
-  </GoogleMap>
 );
+
+class MyPolygon extends Component {
+  onChangeStart = () => null
+  onChangeEnd = () => null
+  onChangeSet = () => null
+  onChangeInsert = () => null
+  onChangeRemove = () => null
+
+  componentDidMount() {
+    // const addListener = (type, func) => window.google.maps.event.addListener(this.__polygon, type, func);
+    // console.log(this.__polygon)
+    // window.google.maps.event.addListener(this.__polygon, 'set_at', console.log)
+    // addListener('set_at', console.log);
+    // addListener('insert_at', console.log);
+    // addListener('remove_at', console.log);
+  }
+
+  setCoords = (position) => {
+    var coordinates = (this.polyRef.getPath().getArray().map(ele => ({lat: ele.lat(), lng: ele.lng()})));
+    // this.polyRef.setPath([])
+    this.props.onPolygonComplete(coordinates)
+  }
+
+  componentDidUpdate(){
+    window.google.maps.event.addListener(
+      this.polyRef.getPath(),
+      'set_at',
+      this.setCoords
+    )
+    window.google.maps.event.addListener(
+      this.polyRef.getPath(),
+      'insert_at',
+      this.setCoords
+    )
+    window.google.maps.event.addListener(
+      this.polyRef.getPath(),
+      'remove_at',
+      this.setCoords
+    )
+  }
+
+  onChange = position => ({
+    coordinate: {
+      lat: this.__polygon.b[position].lat(),
+      lng: this.__polygon.b[position].lng(),
+    },
+    id: this.props.id,
+    position,
+  });
+
+  onRemove = position => ({
+    id: this.props.id,
+    position,
+  });
+
+  // __ref = ref => this.__polygon = ref && ref.getPath();
+  __ref = ref => this.polyRef = ref
+
+  render() {
+    const { paths } = this.props;
+    return <Polygon
+      ref={this.__ref}
+      paths={paths}
+      options={{
+        editable: true,
+        draggable: true
+      }}
+      // onMouseDown={this.onChangeStart}
+      // onTouchStart={this.thisonChangeStart}
+      // onMouseUp={this.onChangeEnd}
+      // onTouchEnd={this.onChangeEnd}
+    />;
+  }
+}
+
+
+
+
 
 const mapStateToProps = state => ({showSignupError: state.showSignupError});
 
