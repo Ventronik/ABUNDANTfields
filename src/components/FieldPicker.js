@@ -13,7 +13,8 @@ class FieldPicker extends Component {
     super(props)
     this.state = {
       parcels: [],
-      loading: false
+      loading: false,
+      fieldSelected: 'HAMBRUGARZ'
     }
   }
 
@@ -28,20 +29,31 @@ class FieldPicker extends Component {
     .then((parcels) => {
       this.setState({
         parcels:parcels.data.userParcels,
-        loading: false
+        loading: false,
+        // fieldSelected: null
       })
     })
     .catch(error => {
       this.setState({loading:false})
     })
   }
-
+  fieldSelectedSentToForm = (fieldNumber) => {
+    this.setState({
+      fieldSelected: fieldNumber
+    })
+    console.log(fieldNumber, this.state.fieldSelected)
+  }
   render(){
     return (
       <div className="col blog-main main-header">
-
+        <div>
+          <h1 className="font-italic border-bottom">
+            Select the field you wish to lease
+          </h1>
+          <button>Choose Field</button>
+        </div>
         {
-          this.state.loading ? <MoonLoader /> : <Parcels parcels={this.state.parcels} refreshData={this.getData}/>
+          this.state.loading ? <MoonLoader /> : <Parcels parcels={this.state.parcels} refreshData={this.getData} fieldSelected={this.state.fieldSelected} fieldSelectedSentToForm={this.fieldSelectedSentToForm}/>
         }
       </div>
     )

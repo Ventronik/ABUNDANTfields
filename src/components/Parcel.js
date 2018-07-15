@@ -17,8 +17,16 @@ class Parcel extends Component {
       tractor: tractorGray
     }
   }
-  fieldSelector = () => {
-    this.state.tractor === tractorGray ? this.setState({tractor:tractorBlue}): this.setState({tractor:tractorGray})
+  fieldSelector = (fieldNumber) => {
+    // this.state.tractor === tractorGray ? this.setState({tractor:tractorBlue}): this.setState({tractor:tractorGray})
+    if(this.props.fieldSelected !== fieldNumber){
+      this.setState({tractor:tractorBlue})
+      this.props.fieldSelectedSentToForm(fieldNumber)
+    } else {
+       this.setState({tractor:tractorGray})
+       this.props.fieldSelectedSentToForm(null)
+    }
+    console.log(this.props.fieldSelected )
   }
 
   render(){
@@ -28,13 +36,13 @@ class Parcel extends Component {
       // refreshData()
       // })
     }
-
     const { id, users_id, location, created_at, username, parcel_id, parcel_name, } = this.props.parcel;
+
     let urlCoordinates = location.reduce((acc,arr)=>`${acc}|${arr.lat},${arr.lng}`,'');
     urlCoordinates = urlCoordinates +`|${location[0].lat},${location[0].lng}`;
 
     return (
-      <div className="blog-post row" onCLick={this.fieldSelector}>
+      <div className="blog-post row" onClick={(e)=>this.fieldSelector(id)}>
         <div className="col-12">
           <h3 style={{display:'inline'}} className="blog-post-title">{parcel_name}</h3>
           {
@@ -54,8 +62,8 @@ class Parcel extends Component {
         <hr />
       <div className="row justify-content-between">
           { this.props.currentUrlPath === "/rentField/fieldPicker" ?
-            <div className="col" onClick={()=>this.fieldSelector()}>
-              <img src={this.state.tractor} onCLick={this.fieldSelector}></img>
+            <div className="col" >
+              <img src={this.state.tractor}></img>
             </div>
             : null
           }

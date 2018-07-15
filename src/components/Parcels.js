@@ -24,10 +24,18 @@ class Parcels extends Component {
     // console.log('HAMBRUGARZ: ', this.props.history.location.pathname)
     const refreshData = this.props.refreshData
     const parcels = this.props.parcels
+    console.log(this.props)
     return(
       <div>
         {parcels.map(parcel =>
-          <Parcel key={parcel.id} parcel={parcel} refreshData={refreshData} currentUrlPath={currentUrlPath}/>)
+          <Parcel
+            key={parcel.id}
+            parcel={parcel}
+            refreshData={refreshData}
+            currentUrlPath={currentUrlPath}
+            fieldSelected={this.props.fieldSelected}
+            fieldSelectedSentToForm={this.props.fieldSelectedSentToForm}
+          />)
         }
       </div>
     )
