@@ -49,7 +49,7 @@ const About = (props ) => {
       </div>
       <Link to="/myFields"><h5 className="font-italic">My Fields</h5></Link>
       <Link to="/newField"><h5 className="font-italic">New Field</h5></Link>
-      <Link to="/rentField"><h5 className="font-italic">Fields to Rent</h5></Link>
+      <Link to="/rentField/fieldPicker"><h5 className="font-italic">Fields to Rent</h5></Link>
     </div>
   )
 }

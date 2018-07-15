@@ -22,8 +22,6 @@ class Home extends Component {
         <main role="main" className="container-fluid">
           <div className="row">
             <SideBar {...this.props}/>
-
-
             {/* <MapContainer /> */}
             <div className="col-md-9 blog-main" >
               <Switch>

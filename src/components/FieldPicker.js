@@ -11,7 +11,6 @@ import Parcels from './Parcels';
 class FieldPicker extends Component {
   constructor(props){
     super(props)
-
     this.state = {
       parcels: [],
       loading: false
@@ -39,10 +38,7 @@ class FieldPicker extends Component {
 
   render(){
     return (
-      <div className="col-md-9 blog-main">
-        <h1 className="font-italic border-bottom">
-          Select the field you wish to lease
-        </h1>
+      <div className="col blog-main main-header">
 
         {
           this.state.loading ? <MoonLoader /> : <Parcels parcels={this.state.parcels} refreshData={this.getData}/>

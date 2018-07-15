@@ -12,13 +12,6 @@ class MapContainer extends Component {
     // this.delayedShowMarker()
   }
 
-  // Delay on the Markers
-  // delayedShowMarker = () => {
-  //   setTimeout(() => {
-  //     this.setState({ isMarkerShown: true })
-  //   }, 2000)
-  // }
-
   handleMarkerClick = () => {
     this.setState({ isMarkerShown: false })
     this.delayedShowMarker()
