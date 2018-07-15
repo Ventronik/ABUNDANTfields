@@ -6,7 +6,7 @@ import FieldPicker from './FieldPicker';
 
 import '../styles/home.css';
 
-class Home extends Component {
+class RentField extends Component {
   render() {
     return (
       <div>
@@ -27,4 +27,4 @@ class Home extends Component {
   }
 }
 
-export default withRouter(Home)
+export default withRouter(RentField)

@@ -13,20 +13,14 @@ import tractorBlue from '../assets/tractor-blue.png';
 class Parcel extends Component {
   constructor(props){
     super(props)
-    this.state={
-      tractor: tractorGray
-    }
   }
-  fieldSelector = (fieldNumber) => {
+  fieldSelector = (id) => {
     // this.state.tractor === tractorGray ? this.setState({tractor:tractorBlue}): this.setState({tractor:tractorGray})
-    if(this.props.fieldSelected !== fieldNumber){
-      this.setState({tractor:tractorBlue})
-      this.props.fieldSelectedSentToForm(fieldNumber)
+    if(this.props.fieldSelected != id){
+      this.props.fieldSelectedSentToForm(id)
     } else {
-       this.setState({tractor:tractorGray})
        this.props.fieldSelectedSentToForm(null)
     }
-    console.log(this.props.fieldSelected )
   }
 
   render(){
@@ -63,7 +57,7 @@ class Parcel extends Component {
       <div className="row justify-content-between">
           { this.props.currentUrlPath === "/rentField/fieldPicker" ?
             <div className="col" >
-              <img src={this.state.tractor}></img>
+              <img src={this.props.fieldSelected == id ? tractorBlue : tractorGray}></img>
             </div>
             : null
           }

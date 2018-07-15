@@ -6,6 +6,9 @@ import { fetchTransactions } from '../actions';                  //This needs to
 import { request, withAuthentication } from '../helpers';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { Button } from 'reactstrap';
+import tractorGray from '../assets/tractor-gray.png';
+import tractorBlue from '../assets/tractor-blue.png';
 import Parcels from './Parcels';
 
 class FieldPicker extends Component {
@@ -14,12 +17,20 @@ class FieldPicker extends Component {
     this.state = {
       parcels: [],
       loading: false,
-      fieldSelected: 'HAMBRUGARZ'
+      fieldSelected: null,
+      buttonDisabled: true
     }
   }
 
   componentDidMount(){
     this.getData()
+  }
+
+  fieldSelectedSentToForm = (fieldNumber) => {
+    this.setState({
+      ...this.state,fieldSelected: fieldNumber
+      // buttonDisabled: !this.state.buttonDisable
+    })
   }
 
   getData = () => {
@@ -29,20 +40,17 @@ class FieldPicker extends Component {
     .then((parcels) => {
       this.setState({
         parcels:parcels.data.userParcels,
-        loading: false,
-        // fieldSelected: null
+        loading: false
       })
     })
     .catch(error => {
       this.setState({loading:false})
     })
   }
-  fieldSelectedSentToForm = (fieldNumber) => {
-    this.setState({
-      fieldSelected: fieldNumber
-    })
-    console.log(fieldNumber, this.state.fieldSelected)
+  onParcelSelection = () => {
+    console.log(this.props)
   }
+
   render(){
     return (
       <div className="col blog-main main-header">
@@ -50,10 +58,17 @@ class FieldPicker extends Component {
           <h1 className="font-italic border-bottom">
             Select the field you wish to lease
           </h1>
-          <button>Choose Field</button>
+          <Button disabled={!this.state.fieldSelected} onClick={()=>console.log(this.state)}>Choose Field</Button>
         </div>
         {
-          this.state.loading ? <MoonLoader /> : <Parcels parcels={this.state.parcels} refreshData={this.getData} fieldSelected={this.state.fieldSelected} fieldSelectedSentToForm={this.fieldSelectedSentToForm}/>
+          this.state.loading ?
+          <MoonLoader /> :
+            
+          <Parcels
+            parcels={this.state.parcels}
+            refreshData={this.getData}
+            fieldSelected={this.state.fieldSelected}
+            fieldSelectedSentToForm={this.fieldSelectedSentToForm}/>
         }
       </div>
     )
