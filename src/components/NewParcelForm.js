@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Map from './Map';
-import NewFieldMap from './NewFieldMap';
-import { Button } from 'reactstrap';
+// import Map from './Map';
+// import NewFieldMap from './NewFieldMap';
+// import { Button } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { request, withAuthentication } from '../helpers';
 
@@ -30,8 +30,8 @@ class NewParcelForm extends Component {
   }
   render() {
     // console.log('this.props: ', this.props, 'this.state: ', this.state, 'props: ')
-    const { paths, onChangeStart, onChangeEnd } = this;
-    const currentUrlPath =  this.props.history.location.pathname
+    // const { paths, onChangeStart, onChangeEnd } = this;
+    // const currentUrlPath =  this.props.history.location.pathname
     return (
       <div>
         <div className='row'>

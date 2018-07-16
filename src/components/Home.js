@@ -9,9 +9,9 @@ import SideBar from './SideBar';
 import MapContainer from './MapContainer';
 import MyFields from './MyFields';
 import NewParcelForm from './NewParcelForm';
-import CreateField from './CreateField';
+// import CreateField from './CreateField';
 import RentField from './RentField';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 import '../styles/home.css';
 
@@ -32,7 +32,7 @@ class Home extends Component {
                 <Route path='/signup' component={SignUp} />
                 <AuthenticatedRoute exact path='/newField' component={NewParcelForm} />
                 <AuthenticatedRoute exact path='/myFields' component={MyFields} />
-                <Route path='/rentField' component={RentField} />
+                <AuthenticatedRoute path='/rentField' component={RentField} />
               </Switch>
             </div>
           </div>

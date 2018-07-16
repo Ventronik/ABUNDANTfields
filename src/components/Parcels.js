@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import Parcel from './Parcel';
 
@@ -10,18 +9,11 @@ class Parcels extends Component {
     super(props)
   }
 
-  // static propTypes = {
-  //   match: PropTypes.object.isRequired,
-  //   location: PropTypes.object.isRequired,
-  //   history: PropTypes.object.isRequired
-  // }
-
-  conponentDidMount(){
+  componentDidMount(){
 
   }
   render(){
     const currentUrlPath =  this.props.history.location.pathname
-    // console.log('HAMBRUGARZ: ', this.props.history.location.pathname)
     const refreshData = this.props.refreshData
     const parcels = this.props.parcels
     console.log(this.props)

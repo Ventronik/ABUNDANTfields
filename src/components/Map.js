@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import { compose, withProps } from "recompose";
-const { DrawingManager } = require("react-google-maps/lib/components/drawing/DrawingManager");
+// const { DrawingManager } = require("react-google-maps/lib/components/drawing/DrawingManager");
 
 const Map = compose (
   withProps({

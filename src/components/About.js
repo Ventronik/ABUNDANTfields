@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { withAuthentication, AuthenticationService } from '../helpers/index'
-import abundantfields from '../assets/abundantfields.png'
+// import abundantfields from '../assets/abundantfields.png'
 
 import '../styles/header.css'
 

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { MoonLoader } from 'react-spinners';
 //we may have to import the user id. with
 import { connect } from 'react-redux';
-import { fetchTransactions } from '../actions';                  //This needs to be changed
-import { request, withAuthentication } from '../helpers';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
+
+import { fetchTransactions } from '../actions';
+import { request, withAuthentication, AuthenticatedRoute } from '../helpers';
 import tractorGray from '../assets/tractor-gray.png';
 import tractorBlue from '../assets/tractor-blue.png';
 import Parcels from './Parcels';
+import NewTransactionForm from './NewTransactionForm';
 
 class FieldPicker extends Component {
   constructor(props){
@@ -17,20 +19,17 @@ class FieldPicker extends Component {
     this.state = {
       parcels: [],
       loading: false,
-      fieldSelected: null,
-      buttonDisabled: true
-    }
+      modal: false,
+      removeSelected: false,
+      closeAll: false,
+      dailySelector: false,
+      value: [],
+    };
+    this.toggle = this.toggle.bind(this);
   }
 
   componentDidMount(){
     this.getData()
-  }
-
-  fieldSelectedSentToForm = (fieldNumber) => {
-    this.setState({
-      ...this.state,fieldSelected: fieldNumber
-      // buttonDisabled: !this.state.buttonDisable
-    })
   }
 
   getData = () => {
@@ -48,7 +47,13 @@ class FieldPicker extends Component {
     })
   }
   onParcelSelection = () => {
-    console.log(this.props)
+    this.props.history.push('/rentField/transactionForm')
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render(){
@@ -58,17 +63,38 @@ class FieldPicker extends Component {
           <h1 className="font-italic border-bottom">
             Select the field you wish to lease
           </h1>
-          <Button disabled={!this.state.fieldSelected} onClick={()=>console.log(this.state)}>Choose Field</Button>
+          <Button disabled={!this.props.fieldSelected} onClick={()=>this.onParcelSelection()}>Choose Field</Button>
         </div>
         {
           this.state.loading ?
           <MoonLoader /> :
-            
-          <Parcels
-            parcels={this.state.parcels}
-            refreshData={this.getData}
-            fieldSelected={this.state.fieldSelected}
-            fieldSelectedSentToForm={this.fieldSelectedSentToForm}/>
+          <Switch>
+            <AuthenticatedRoute
+
+              path='/rentField/transactionForm'
+              render={(props) =>(
+                <NewTransactionForm
+                {...props}
+                parcels={this.state.parcels}
+                refreshData={this.getData}
+                fieldSelected={this.props.fieldSelected}
+                fieldSelectedSentToForm={this.props.fieldSelectedSentToForm}
+              />
+              )}
+            />
+            <AuthenticatedRoute
+
+              path='/rentField/fieldPicker'
+              render={(props)  =>
+                <Parcels
+                  {...props}
+                  parcels={this.state.parcels}
+                  refreshData={this.getData}
+                  fieldSelected={this.props.fieldSelected}
+                  fieldSelectedSentToForm={this.props.fieldSelectedSentToForm}
+                />
+            }/>
+          </Switch>
         }
       </div>
     )

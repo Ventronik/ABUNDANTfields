@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 const Transaction = ({ transaction, authState, refreshData, deleteTransaction }) => {
-  const { id, users_id, location, created_at, username, parcel_id, parcel_name } = transaction;
+  const { id, users_id, created_at, username, parcel_id, parcel_name } = transaction;
 
   return (
     <div className="blog-post">

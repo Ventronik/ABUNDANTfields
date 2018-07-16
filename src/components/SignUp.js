@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Form, FormGroup, Alert, Input } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
 import { userSignup } from '../actions/auth';
 
-import { request, AuthenticationService } from '../helpers/index';
+// import { request, AuthenticationService } from '../helpers/index';
 
 import '../styles/login.css'
 

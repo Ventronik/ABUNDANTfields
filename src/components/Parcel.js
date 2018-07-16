@@ -14,29 +14,31 @@ class Parcel extends Component {
   constructor(props){
     super(props)
   }
-  fieldSelector = (id) => {
+  fieldSelector = (field) => {
     // this.state.tractor === tractorGray ? this.setState({tractor:tractorBlue}): this.setState({tractor:tractorGray})
-    if(this.props.fieldSelected != id){
-      this.props.fieldSelectedSentToForm(id)
+    if(this.props.fieldSelected !== field){
+      this.props.fieldSelectedSentToForm(field)
     } else {
-       this.props.fieldSelectedSentToForm(null)
+       this.props.fieldSelectedSentToForm({id: null})
     }
+    let thing;
+    if(this.props.fieldSelected.id) {thing = this.props.fieldSelected.id}
+    console.log('MILDCATS: ', thing, this.props.parcel.id)
   }
 
   render(){
-    const remove = (id) => {
+    // const remove = (id) => {
       // request(`/blog_posts/${id}`, 'delete')
       // .then(response => {
       // refreshData()
       // })
-    }
+    // }
     const { id, users_id, location, created_at, username, parcel_id, parcel_name, } = this.props.parcel;
 
     let urlCoordinates = location.reduce((acc,arr)=>`${acc}|${arr.lat},${arr.lng}`,'');
     urlCoordinates = urlCoordinates +`|${location[0].lat},${location[0].lng}`;
-
     return (
-      <div className="blog-post row" onClick={(e)=>this.fieldSelector(id)}>
+      <div className="blog-post row" onClick={(e)=>this.fieldSelector(this.props.parcel)}>
         <div className="col-12">
           <h3 style={{display:'inline'}} className="blog-post-title">{parcel_name}</h3>
           {
@@ -57,14 +59,15 @@ class Parcel extends Component {
       <div className="row justify-content-between">
           { this.props.currentUrlPath === "/rentField/fieldPicker" ?
             <div className="col" >
-              <img src={this.props.fieldSelected == id ? tractorBlue : tractorGray}></img>
+              <img src={this.props.fieldSelected.id === this.props.parcel.id ? tractorBlue : tractorGray} alt="field selection icon"></img>
             </div>
             : null
           }
-          <div classname="col">
+          <div className="col">
             <img
               src={`https://maps.googleapis.com/maps/api/staticmap?size=120x120&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
-              height="180" width="180"></img>
+              height="180" width="180"
+              alt="Satellite display of field"></img>
           </div>
           <div className="col">
             <ul>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from 'react-google-maps';
 import { compose, withProps } from 'recompose';
 import { addField } from '../actions';
@@ -136,8 +136,8 @@ class MyPolygon extends Component {
 
 const mapStateToProps = state => ({showSignupError: state.showSignupError});
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({addField}, dispatch)
-}
+// const mapDispatchToProps = (dispatch) => {
+  // return bindActionCreators({addField}, dispatch)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(NewFieldMap);
+export default connect(mapStateToProps)(NewFieldMap);
