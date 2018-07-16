@@ -39,7 +39,7 @@ class TransactionsFrontPage extends Component {
 
   render(){
     return (
-      <div className="col-md-9 blog-main">
+      <div className="blog-main">
         <h1 className="font-italic border-bottom">
           Current Transactions
         </h1>

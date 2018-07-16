@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import Parcel from './Parcel'
-import { request } from '../helpers'
+import { request, withAuthentication } from '../helpers'
 
 const NewTransactionForm = (props) => {
   console.log('Dustin: ', props)
@@ -14,8 +14,12 @@ const NewTransactionForm = (props) => {
         <Parcel parcel={props.fieldSelected} />
         <Form onSubmit={(event) => {
           event.preventDefault()
+          const userId = props.authState.id
+          const parcel_id = props.fieldSelected.id
           const price = event.target.price.value
-
+          
+          request(`/users/${userId}/transactions`, 'post', {parcel_id, price})
+          .then(() => props.history.push('/home'))
           // const acres = event.target.acres.value
           // const parcelType = event.target.parcelType.value
 
@@ -39,4 +43,4 @@ const mapStateToProps = state => ({
   // parcel
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NewTransactionForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withAuthentication(NewTransactionForm)));
