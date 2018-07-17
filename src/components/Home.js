@@ -19,12 +19,11 @@ class Home extends Component {
   render() {
     console.log(this.props)
     return (
-      <div>
         <main role="main" className="container-fluid">
           <div className="row">
             <SideBar {...this.props}/>
             {/* <MapContainer /> */}
-            <div className="col-md-9 blog-main" >
+            <div className="col-md-10 blog-main" >
               <Switch>
 
                 <Route exact path='/' component={MapContainer} />
@@ -38,9 +37,6 @@ class Home extends Component {
             </div>
           </div>
         </main>
-
-        {/* <Footer /> */}
-      </div>
     )
   }
 }

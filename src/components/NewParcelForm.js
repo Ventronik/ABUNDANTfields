@@ -33,16 +33,18 @@ class NewParcelForm extends Component {
     // const { paths, onChangeStart, onChangeEnd } = this;
     // const currentUrlPath =  this.props.history.location.pathname
     return (
-      <div className="container">
-        <div className='row'>
-          <div className='col'>
-            <h1>Create a new Field</h1>
-          <NewParcelFormInputs onNewParcelForm={this.onNewParcelForm}/>
+      <div>
+        <div className="container">
+          <div className='row'>
+            <div className='col'>
+              <h1>Create a new Field</h1>
+              <NewParcelFormInputs onNewParcelForm={this.onNewParcelForm}/>
+            </div>
           </div>
-        </div>
-        <div className='row'>
-          <div className='col'>
-            <MapContainer onPolygonComplete={this.onPolygonComplete} paths={this.state.paths} onMouseUp={this.onMouseUp}/>
+          <div className='row'>
+            <div className='col'>
+              <MapContainer onPolygonComplete={this.onPolygonComplete} paths={this.state.paths} onMouseUp={this.onMouseUp}/>
+            </div>
           </div>
         </div>
       </div>

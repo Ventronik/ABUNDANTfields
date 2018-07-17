@@ -43,16 +43,9 @@ class MyFields extends Component {
         <h1 className="font-italic border-bottom">
           Your list of Fields
         </h1>
-
         {
           this.state.loading ? <MoonLoader /> : <Parcels parcels={this.state.parcels} refreshData={this.getData}/>
         }
-
-        <nav className="blog-pagination">
-          <a className="btn btn-outline-primary">Older</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-        </nav>
-
       </div>
     )
   }

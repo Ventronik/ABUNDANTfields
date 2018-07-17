@@ -50,13 +50,6 @@ class TransactionsFrontPage extends Component {
             <MoonLoader /> :
             <Transactions transactions={this.state.transactions} getData={this.getData}/>
         }
-
-
-          {/* <nav className="blog-pagination">
-            <a className="btn btn-outline-primary">Older</a>
-            <a className="btn btn-outline-secondary disabled">Newer</a>
-          </nav> */}
-
       </div>
     )
   }
