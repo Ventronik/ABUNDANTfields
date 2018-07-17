@@ -17,6 +17,7 @@ import '../styles/home.css';
 
 class Home extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         <main role="main" className="container-fluid">

@@ -65,7 +65,7 @@ class Parcel extends Component {
           }
           <div className="col">
             <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?size=120x120&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
+              src={`https://maps.googleapis.com/maps/api/staticmap?size=120x120&scale=2&maptype=satellite&sensor=false&key=AIzaSyC7V5C9L6LbW9TKDKYSuYXKuXYYaORJrD0&path=color:red|weight:4|fillcolor:white${urlCoordinates}`}
               height="180" width="180"
               alt="Satellite display of field"></img>
           </div>

@@ -18,8 +18,6 @@ request('/auth/token')
   AuthenticationService.setAuthState(response.data)
 })
 
-window.AuthenticationService = AuthenticationService
-
 ReactDOM.render(
   <Provider store={newStore}>
     <App />

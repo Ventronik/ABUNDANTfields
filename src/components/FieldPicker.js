@@ -58,7 +58,7 @@ class FieldPicker extends Component {
 
   render(){
     return (
-      <div className="col blog-main main-header">
+      <div className="col main-header">
         <div>
           <h1 className="font-italic border-bottom">
             Select the field you wish to lease

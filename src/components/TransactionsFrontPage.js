@@ -24,8 +24,9 @@ class TransactionsFrontPage extends Component {
   getData = () => {
     this.setState({loading:true})
     // this.props.fetchTransactions()
-    request('/transactions?limit=10&orderByColumn=id&orderDirection=desc')
+    request('/transactions?renter_id=null&orderByColumn=id&orderDirection=desc')
     .then((transactions) => {
+      console.log('HAMBRUGARZ: ', transactions)
       this.setState({
         transactions:transactions.data.transactions,
         loading: false
@@ -39,20 +40,22 @@ class TransactionsFrontPage extends Component {
 
   render(){
     return (
-      <div className="blog-main">
+      <div>
         <h1 className="font-italic border-bottom">
-          Current Transactions
+          Fields Available
         </h1>
 
         {
-          this.state.loading ? <MoonLoader /> : <Transactions transactions={this.state.transactions} refreshData={this.getData}/>
+          this.state.loading ?
+            <MoonLoader /> :
+            <Transactions transactions={this.state.transactions} getData={this.getData}/>
         }
 
 
-        <nav className="blog-pagination">
-          <a className="btn btn-outline-primary">Older</a>
-          <a className="btn btn-outline-secondary disabled">Newer</a>
-        </nav>
+          {/* <nav className="blog-pagination">
+            <a className="btn btn-outline-primary">Older</a>
+            <a className="btn btn-outline-secondary disabled">Newer</a>
+          </nav> */}
 
       </div>
     )

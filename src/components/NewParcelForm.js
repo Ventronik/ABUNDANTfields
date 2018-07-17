@@ -33,7 +33,7 @@ class NewParcelForm extends Component {
     // const { paths, onChangeStart, onChangeEnd } = this;
     // const currentUrlPath =  this.props.history.location.pathname
     return (
-      <div>
+      <div className="container">
         <div className='row'>
           <div className='col'>
             <h1>Create a new Field</h1>

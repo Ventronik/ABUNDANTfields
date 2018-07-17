@@ -7,7 +7,6 @@ import Parcel from './Parcel'
 import { request, withAuthentication } from '../helpers'
 
 const NewTransactionForm = (props) => {
-  console.log('Dustin: ', props)
   return(
     <div className="row">
       <div className="col">
@@ -17,7 +16,7 @@ const NewTransactionForm = (props) => {
           const userId = props.authState.id
           const parcel_id = props.fieldSelected.id
           const price = event.target.price.value
-          
+
           request(`/users/${userId}/transactions`, 'post', {parcel_id, price})
           .then(() => props.history.push('/home'))
           // const acres = event.target.acres.value

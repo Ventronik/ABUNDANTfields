@@ -39,7 +39,7 @@ class MyFields extends Component {
 
   render(){
     return (
-      <div className="col-md-9 blog-main">
+      <div>
         <h1 className="font-italic border-bottom">
           Your list of Fields
         </h1>

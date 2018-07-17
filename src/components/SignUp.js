@@ -27,7 +27,7 @@ class Login extends Component {
 
   render(){
     return (
-      <div className="login col-md-9 blog-main">
+      <div className="login">
         <Form onSubmit={this.handleSignUp} className="login-form">
           <FormGroup>
             <div className="text-center mb-4">
