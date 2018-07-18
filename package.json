@@ -27,11 +27,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
-    "dev": "nodemon ./src/app.js",
-    "knex": "knex",
-    "latest": "knex migrate:latest",
-    "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",
