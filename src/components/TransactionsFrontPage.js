@@ -26,7 +26,6 @@ class TransactionsFrontPage extends Component {
     // this.props.fetchTransactions()
     request('/transactions?renter_id=null&orderByColumn=id&orderDirection=desc')
     .then((transactions) => {
-      console.log('HAMBRUGARZ: ', transactions)
       this.setState({
         transactions:transactions.data.transactions,
         loading: false

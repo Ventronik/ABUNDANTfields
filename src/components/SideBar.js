@@ -10,14 +10,11 @@ import { withAuthentication, AuthenticationService } from '../helpers';
 import '../styles/sidebar.css';
 
 const SideBar = (props) => {
-  console.log('HERE: ', props)
   return (
     <aside className="col-md-2 blog-sidebar">
       <div className="sidenav">
-        <Link to={props.authState ? '/home' : '/'}><img src={abundantfields} alt="..." className="img-thumbnail"></img></Link>
+        <Link to={props.authState ? '/currentTransactions' : '/'}><img src={abundantfields} alt="..." className="img-thumbnail"></img></Link>
         <About {...props}/>
-        {/* <Archives /> */}
-        {/* <Authors /> */}
       </div>
     </aside>
   )

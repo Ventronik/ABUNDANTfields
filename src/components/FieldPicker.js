@@ -62,8 +62,8 @@ class FieldPicker extends Component {
         <div>
           <h1 className="font-italic border-bottom">
             Select the field you wish to lease
+            <span>    <Button color="info" disabled={!this.props.fieldSelected} onClick={()=>this.onParcelSelection()}>Choose Field</Button></span>
           </h1>
-          <Button disabled={!this.props.fieldSelected} onClick={()=>this.onParcelSelection()}>Choose Field</Button>
         </div>
         {
           this.state.loading ?

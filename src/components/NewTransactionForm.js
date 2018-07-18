@@ -18,7 +18,7 @@ const NewTransactionForm = (props) => {
           const price = event.target.price.value
 
           request(`/users/${userId}/transactions`, 'post', {parcel_id, price})
-          .then(() => props.history.push('/home'))
+          .then(() => props.history.push('/currentTransactions'))
           // const acres = event.target.acres.value
           // const parcelType = event.target.parcelType.value
 

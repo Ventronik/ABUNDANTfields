@@ -30,7 +30,7 @@ class MyFields extends Component {
         parcels:parcels.data.userParcels,
         loading: false
       })
-      console.log('PARCELS: ', this.state.parcels)
+      // console.log('PARCELS: ', this.state.parcels)
     })
     .catch(error => {
       this.setState({loading:false})

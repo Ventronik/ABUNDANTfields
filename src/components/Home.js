@@ -17,17 +17,17 @@ import '../styles/home.css';
 
 class Home extends Component {
   render() {
-    console.log(this.props)
+    console.log(this.props.location.pathname)
     return (
         <main role="main" className="container-fluid">
           <div className="row">
             <SideBar {...this.props}/>
             {/* <MapContainer /> */}
-            <div className="col-md-10 blog-main" >
+            <div className={this.props.location.pathname === "/login" ? "col-md-10": "col-md-10 blog-main"} >
               <Switch>
 
                 <Route exact path='/' component={MapContainer} />
-                <Route path='/home' component={TransactionsFrontPage} />
+                <Route path='/currentTransactions' component={TransactionsFrontPage} />
                 <Route path='/login' component={Login} />
                 <Route path='/signup' component={SignUp} />
                 <AuthenticatedRoute exact path='/newField' component={NewParcelForm} />

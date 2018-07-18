@@ -26,7 +26,7 @@ class Login extends Component {
     })
     .then(response => {
       AuthenticationService.setAuthState(response.data)
-      this.props.history.push('/home')
+      this.props.history.push('/currentTransactions')
     })
     .catch(error => {
       this.setState({showErrorMessage: true})

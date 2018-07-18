@@ -46,7 +46,6 @@ const NewFieldMap = compose (
         onRectangleComplete={
           function (rectangle) {
             var coordinates = (rectangle.getBounds().toJSON());
-            console.log(coordinates);
           }}
         />
       <MyPolygon paths={props.paths} onPolygonComplete={props.onPolygonComplete}/>
@@ -64,12 +63,6 @@ class MyPolygon extends Component {
   onChangeRemove = () => null
 
   componentDidMount() {
-    // const addListener = (type, func) => window.google.maps.event.addListener(this.__polygon, type, func);
-    // console.log(this.__polygon)
-    // window.google.maps.event.addListener(this.__polygon, 'set_at', console.log)
-    // addListener('set_at', console.log);
-    // addListener('insert_at', console.log);
-    // addListener('remove_at', console.log);
   }
 
   setCoords = (position) => {

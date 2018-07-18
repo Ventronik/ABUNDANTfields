@@ -22,5 +22,5 @@ const Map = compose (
 );
 
 const mapStateToProps = state => ({transactions: state.transactions});
-console.log('asdf', this.state)
+
 export default connect()(Map);

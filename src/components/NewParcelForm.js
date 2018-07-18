@@ -29,9 +29,7 @@ class NewParcelForm extends Component {
     // axios/request
   }
   render() {
-    // console.log('this.props: ', this.props, 'this.state: ', this.state, 'props: ')
-    // const { paths, onChangeStart, onChangeEnd } = this;
-    // const currentUrlPath =  this.props.history.location.pathname
+
     return (
       <div>
         <div className="container">

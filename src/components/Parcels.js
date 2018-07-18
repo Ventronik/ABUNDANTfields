@@ -16,7 +16,6 @@ class Parcels extends Component {
     const currentUrlPath =  this.props.history.location.pathname
     const refreshData = this.props.refreshData
     const parcels = this.props.parcels
-    console.log(this.props)
     return(
       <div>
         {parcels.map(parcel =>
@@ -32,10 +31,6 @@ class Parcels extends Component {
       </div>
     )
   }
-// = ({parcels, authState, refreshData}) => {
-//   // console.log('HAMBRUGARZ: ', props);
-//
-// }
 }
 
 export default withRouter(Parcels);
