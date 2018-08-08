@@ -21,6 +21,4 @@ const Map = compose (
     </GoogleMap>
 );
 
-const mapStateToProps = state => ({transactions: state.transactions});
-
 export default connect()(Map);

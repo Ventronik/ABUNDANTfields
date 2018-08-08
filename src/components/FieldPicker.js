@@ -3,13 +3,11 @@ import { MoonLoader } from 'react-spinners';
 //we may have to import the user id. with
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 import { fetchTransactions } from '../actions';
 import { request, withAuthentication, AuthenticatedRoute } from '../helpers';
-import tractorGray from '../assets/tractor-gray.png';
-import tractorBlue from '../assets/tractor-blue.png';
 import Parcels from './Parcels';
 import NewTransactionForm from './NewTransactionForm';
 

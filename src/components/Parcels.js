@@ -5,13 +5,6 @@ import { withRouter } from 'react-router-dom';
 import Parcel from './Parcel';
 
 class Parcels extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  componentDidMount(){
-
-  }
   render(){
     const currentUrlPath =  this.props.history.location.pathname
     const refreshData = this.props.refreshData

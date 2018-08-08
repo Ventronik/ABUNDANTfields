@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import { withScriptjs, withGoogleMap, GoogleMap, Polygon } from 'react-google-maps';
 import { compose, withProps } from 'recompose';
-import { addField } from '../actions';
 const { DrawingManager } = require('react-google-maps/lib/components/drawing/DrawingManager');
 
 const NewFieldMap = compose (
@@ -43,10 +42,10 @@ const NewFieldMap = compose (
           }
         }
 
-        onRectangleComplete={
-          function (rectangle) {
-            var coordinates = (rectangle.getBounds().toJSON());
-          }}
+        // onRectangleComplete={
+        //   function (rectangle) {
+        //     var coordinates = (rectangle.getBounds().toJSON());
+        //   }}
         />
       <MyPolygon paths={props.paths} onPolygonComplete={props.onPolygonComplete}/>
       </GoogleMap>

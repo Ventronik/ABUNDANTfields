@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { request, withAuthentication } from '../helpers';
 import { bindActionCreators } from 'redux';
 import { deleteTransaction } from '../actions';
@@ -8,7 +7,7 @@ import { Button } from 'reactstrap';
 import moment from 'moment';
 
 const Transaction = ({ transaction, authState, getData, deleteTransaction }) => {
-  const { id, users_id, created_at, username, parcel_id, parcel_name, location, acres, renter_fname, renter_lname, renter_uname } = transaction;
+  const { id, users_id, created_at, username, parcel_name, location, acres, renter_fname, renter_lname } = transaction;
   let urlCoordinates = ''
   if(location) urlCoordinates = location.reduce((acc,arr)=>`${acc}|${arr.lat},${arr.lng}`,'');
   if(location) urlCoordinates = urlCoordinates +`|${location[0].lat},${location[0].lng}`;

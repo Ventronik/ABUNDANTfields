@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withAuthentication } from '../helpers';
 import { bindActionCreators } from 'redux';
 import { deleteTransaction } from '../actions';
@@ -12,17 +11,13 @@ import tractorBlue from '../assets/tractor-blue.png';
 
 
 class Parcel extends Component {
-  constructor(props){
-    super(props)
-  }
+
   fieldSelector = (field) => {
     if(this.props.fieldSelected !== field){
       this.props.fieldSelectedSentToForm(field)
     } else {
        this.props.fieldSelectedSentToForm({id: null})
     }
-    let thing;
-    if(this.props.fieldSelected.id) {thing = this.props.fieldSelected.id}
   }
 
   render(){
@@ -32,7 +27,7 @@ class Parcel extends Component {
       // refreshData()
       // })
     // }
-    const { id, users_id, location, created_at, username, parcel_id, parcel_name, acres, renter_fname, renter_lname, renter_uname } = this.props.parcel;
+    const { id, users_id, location, created_at, parcel_name, acres} = this.props.parcel;
     const {user, renter} = this.props.parcel
 
     let urlCoordinates = location.reduce((acc,arr)=>`${acc}|${arr.lat},${arr.lng}`,'');

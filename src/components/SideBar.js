@@ -6,7 +6,7 @@ import About from './About';
 // import Archives from './Archives';
 // import Authors from './Authors';
 
-import { withAuthentication, AuthenticationService } from '../helpers';
+import { withAuthentication } from '../helpers';
 import '../styles/sidebar.css';
 
 const SideBar = (props) => {
