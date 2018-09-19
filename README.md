@@ -40,7 +40,6 @@ Upon logging in a farmer is presented a list fo fields which are available for r
 
  ```shell
  * fork and clone this repository
- * install expo
  * run npm install
  ```
 
